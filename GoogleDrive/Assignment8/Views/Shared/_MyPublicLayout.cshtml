@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+ }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <title>_MyPublicLayout</title>
+    @RenderSection("styles", false)
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @RenderSection("scripts", false)
+   
+
+
+
+</head>
+<body>
+   
+    <div> 
+        @RenderBody()
+    </div>
+   
+
+</body>
+</html>

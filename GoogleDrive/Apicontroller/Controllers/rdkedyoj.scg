@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Web.Http;
+using Assignment8.Models;
+namespace Apicontroller.Controllers
+{
+    public class pdfdownloadController : ApiController
+    {
+
+        [HttpGet]
+        public Object downloadpdf(String path)
+        {
+            var rootpath = System.Web.HttpContext.Current.Server.MapPath("path");
+            FolderBAL fb = new FolderBAL();
+           // var fileDTO = fb.GetFileByUniqueID(UniqueName);
+           
+            {
+                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+                var filefullpath = System.IO.Path.Combine(rootpath);
+                byte[] file = System.IO.File.ReadAllBytes(filefullpath);
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(file);
+                response.Content = new ByteArrayContent(file);
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/plain");
+                //response.Content.Headers.ContentDisposition.FileName = fileDTO.fileActualName;
+                return response;
+            }
+           
+        }
+     
+    }
+}

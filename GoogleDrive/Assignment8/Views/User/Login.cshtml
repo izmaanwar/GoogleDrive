@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MyPublicLayout.cshtml";
+}
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/Content/style.css")" />
+}
+
+     <div style="border:1px;width:1200px;">
+     <h1 style="text-align:center;">Google Drive</h1>
+     <div class="form2">
+     <header>login form</header>
+     <form name="myForm1" method="post" action="/User/Login" enctype="multipart/form-data">
+     <input type="text" placeholder="login" name="login" id="login"/>
+     <input type="password" placeholder="Password" name="password" id="password"/>
+     <input type="submit" value="Login" />
+    
+     <span>
+      @if (!string.IsNullOrEmpty(ViewBag.mesg))
+     {
+     <script type="text/javascript">
+      alert("@ViewBag.mesg");
+     </script>
+     }
+    </span>
+             
+</form>
+
+           

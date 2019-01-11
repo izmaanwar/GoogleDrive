@@ -1,0 +1,54 @@
+<style type="text/css">
+        .overlay
+        {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            z-index: 101;
+            background-color: #000000;
+            opacity: .15;
+            filter: alpha(opacity=15);
+            -moz-opacity: .15;
+        }
+        .web_dialog
+        {
+            left: 50%;
+            top: 50%;
+            width: 200px;
+            height: 200px;
+            background-color: White;
+            border-color: Black;
+            border-style: solid;
+            z-index: 102;
+            display: none;
+            position: fixed;
+            margin-left: -100px;
+            margin-top: -100px;
+        }
+        .dialog_title
+        {
+            background-color: Gray;
+            padding: 2px;
+            color: White;
+            border-bottom: solid 2px #336699;
+        }
+        .dialog_title a
+        {
+            color: White;
+            text-align: right;
+        }
+        .align_right
+        {
+            text-align: right;
+        }
+        .content
+        {
+            padding: 2px;
+        }
+
+   </style>

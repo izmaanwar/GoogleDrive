@@ -1,0 +1,190 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebPrac.Security;
+using Assignment8.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+namespace Assignment8.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+           
+            DateTime dTime = DateTime.Now;
+          
+            var filePath = Server.MapPath("~/docs") + "\\" + DateTime.Now.Ticks.ToString() + ".pdf";
+            var doc1 = new Document();
+
+            //Create Document Instance and load in 'doc1'
+            var streamObj = new System.IO.FileStream(filePath, System.IO.FileMode.CreateNew);
+            PdfWriter.GetInstance(doc1, streamObj);
+            doc1.Open();
+             combine cm = new combine();
+             FolderBAL fb = new FolderBAL();
+              
+            var id = Session["parid"];
+            int id1 = (int)id;
+             cm = fb.combine(id1);
+             string name = fb.getName(id1);
+            
+             foreach(var item in cm.allfolders)
+             {
+                 doc1.Add(new Paragraph("FolderName :" + item.Name));
+                 doc1.Add(new Paragraph("Type :" + "Folder"));
+                 doc1.Add(new Paragraph("size :" + "none"));
+                 doc1.Add(new Paragraph("parentFolder :" + name));
+             }
+
+             foreach (var item in cm.allfiles)
+             {
+                 doc1.Add(new Paragraph("FileName : " + item.FileUniqueName));
+                 doc1.Add(new Paragraph("Type : " + "File"));
+                 doc1.Add(new Paragraph("size :" + item.Size));
+                 doc1.Add(new Paragraph("parentFolder :" + name));
+             }
+
+             
+            
+            doc1.Close();
+
+            return Redirect("http://localhost:47496/api/pdfdownload/downloadpdf?path=" + filePath); 
+        }
+
+        public ActionResult getcombine()
+        {
+
+            FolderBAL fb = new FolderBAL();
+             var id = Session["parid"];
+            int id1 = (int)id;
+            var cm= fb.combine(id1);
+
+
+            return View("file",cm);
+        }
+
+        public ActionResult file()
+        {
+            string id = Request.QueryString["folderid"];
+            int folderid = int.Parse(id);
+            @ViewBag.folderid = folderid;
+            Session["parid"] = folderid;
+
+            FolderBAL fb = new FolderBAL();
+            FolderDTO fd = new FolderDTO();
+            string name= fb.getName(folderid);
+            Session["name"] = name;
+            var cm = fb.combine(folderid);
+
+            return View("file", cm);
+
+
+        }
+        public ActionResult Admin()
+        {
+            if (SessionManager.IsValidUser)
+            {
+
+                if (SessionManager.User.IsAdmin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("NormalUser");
+                }
+            }
+            else
+            {
+                return Redirect("~/User/Login");
+            }
+        }
+        public ActionResult NormalUser()
+        {
+            
+                   @ViewBag.name = Session["username"];
+                   @ViewBag.userid= Session["userid"];
+                   
+                   FolderBAL fb = new FolderBAL();
+                   FolderDTO fd = new FolderDTO();
+                   var folders= fb.GetAllFolders();
+                   
+                    return View(folders);
+                
+           
+        }
+       /* public ActionResult parfolder()
+        {
+
+            @ViewBag.name = Session["username"];
+            @ViewBag.userid = Session["userid"];
+            var id = Session["parid"];
+            int id1 = (int)id;
+            FolderBAL fb = new FolderBAL();
+            FolderDTO fd = new FolderDTO();
+            
+            var folders = fb.GetAllParFolders(id1);
+
+            return View("file",folders);
+
+
+        }*/
+        public ActionResult deleteparFolder()
+        {
+            string id = Request.QueryString["folderid"];
+            int folderid1 = int.Parse(id);
+            @ViewBag.name = Session["username"];
+            FolderBAL fb = new FolderBAL();
+            FolderDTO fd = new FolderDTO();
+            if (fb.DeleteProduct(folderid1) > 0)
+            {
+                return Redirect("http://localhost:50362/Home/getcombine"); 
+            }
+            
+                return View("file");
+            
+            
+        }
+
+
+        public ActionResult deletefile()
+        {
+            string id = Request.QueryString["uniqueName"];
+            int uniquename = int.Parse(id);
+            @ViewBag.name = Session["username"];
+            FolderBAL fb = new FolderBAL();
+            FolderDTO fd = new FolderDTO();
+            if (fb.deletefile(uniquename) > 0)
+            {
+                return Redirect("http://localhost:50362/Home/getcombine");
+            }
+
+            return View("file");
+
+
+        }
+          [HttpPost]
+        public JsonResult  deleteFolder(string folderid)
+        {
+       
+           
+            int folderid1=   int.Parse(folderid);
+            @ViewBag.name = Session["username"];
+            FolderBAL fb = new FolderBAL();
+            FolderDTO fd = new FolderDTO();
+            if (fb.DeleteProduct(folderid1) > 0  && fb.Deletefile(folderid1) > 0 && fb.deletefolder(folderid1) >0  )
+            {
+                Url.Content("~/Home/NormalUser");
+            }
+
+            return Json(JsonRequestBehavior.AllowGet);
+
+        }
+
+        
+
+    }
+}

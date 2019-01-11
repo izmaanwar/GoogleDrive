@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "CreateFolder";
+Layout = "~/Views/Shared/_MyPublicLayout.cshtml";
+}
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/Content/CreateFolder.css")" />
+}
+
+@section scripts{
+
+<script type="text/javascript">
+    $(document).ready(MainFunction);
+
+    function MainFunction() {
+
+
+        $('#lnkShowDialog').click(function (event) {
+            ShowDialog();
+            //To stop actual/default functionality of the link
+            event.preventDefault();
+            return false;
+        });
+
+        $('#lnkClose').click(function (e) {
+            HideDialog();
+            e.preventDefault();
+        });
+
+        $('#btnOK').click(function (e) {
+
+            var value = $('#txtName').val();
+
+
+            HideDialog();
+        });
+
+
+    } //End of MainFunction
+
+
+    function ShowDialog() {
+
+        $('#divoverlay').show();
+        $('#modal_dialog').slideDown(500);
+    }
+    function HideDialog() {
+        $('#divoverlay').hide();
+        $('#modal_dialog').slideUp(500);
+    }
+
+</script>
+    }
+
+
+<div id="divoverlay" class="overlay">
+</div>
+<div>
+    <a href="#" id="lnkShowDialog">create folder</a> <span id="spText"></span>
+</div>
+<div id="modal_dialog" class="web_dialog">
+    <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+        <tr>
+            <td class="dialog_title">
+                folder
+            </td>
+            <td class="dialog_title align_right">
+                <a id="lnkClose" href="#">close</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="content">
+                    Name:<input id="txtName" type="text" />
+                    <button id="btnOK" value="OK">OK</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

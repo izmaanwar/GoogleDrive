@@ -1,0 +1,27 @@
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Debug\PMS.BAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Debug\PMS.BAL.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Debug\PMS.DAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Debug\PMS.Entities.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Debug\PMS.DAL.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Debug\PMS.Entities.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\obj\Debug\PMS.BAL.csprojResolveAssemblyReference.cache
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\obj\Debug\PMS.BAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\obj\Debug\PMS.BAL.pdb
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\bin\Debug\PMS.BAL.dll
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\bin\Debug\PMS.BAL.pdb
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\bin\Debug\PMS.DAL.dll
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\bin\Debug\PMS.Entities.dll
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\bin\Debug\PMS.DAL.pdb
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\bin\Debug\PMS.Entities.pdb
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\obj\Debug\PMS.BAL.csprojResolveAssemblyReference.cache
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\obj\Debug\PMS.BAL.dll
+C:\Users\aa\Documents\Visual Studio 2015\Projects\Assignment8\PMS.BAL\obj\Debug\PMS.BAL.pdb
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\bin\Debug\PMS.BAL.dll
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\bin\Debug\PMS.BAL.pdb
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\bin\Debug\PMS.DAL.dll
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\bin\Debug\PMS.Entities.dll
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\bin\Debug\PMS.DAL.pdb
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\bin\Debug\PMS.Entities.pdb
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\obj\Debug\PMS.BAL.csprojResolveAssemblyReference.cache
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\obj\Debug\PMS.BAL.dll
+C:\Users\aa\Documents\asp projects\Assignment8\PMS.BAL\obj\Debug\PMS.BAL.pdb

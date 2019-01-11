@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Assignment8.Models.FileDTO>
+    @{
+        ViewBag.Title = "search";
+        Layout = "~/Views/Shared/pageslayout.cshtml";
+    }
+
+    <form name="myForm1" method="post" action="/User/search" enctype="multipart/form-data">
+        <input type="text" name="Actualname" id="login" />
+
+        <input type="submit" value="search" />
+    </form>
+
+    <table>
+        <tr>
+            
+            <th>Preview</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+               
+                <th><img src="http://localhost:47496/api/thumbnail/getThumbnail?uniqueName=@item.FileUniqueName" style="width:60px;height:60px;">
+            </tr>
+
+        }
+
+    </table>

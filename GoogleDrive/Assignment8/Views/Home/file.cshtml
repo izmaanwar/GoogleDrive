@@ -1,0 +1,292 @@
+﻿@model   Assignment8.Models.combine
+
+
+   @{
+        ViewBag.Title = "file";
+        Layout = "~/Views/Shared/_MyProductLayout.cshtml";
+    }
+
+    @section styles{
+        <link rel="Stylesheet" href="@Href("~/Content/CreateFolder.css")" />
+    }
+      <script type="text/javascript">
+      var name = '@Session["userid"]';
+      </script>
+    <h1></h1>
+      <p>@Html.ActionLink("Home", "NormalUser", "Home")  <a href="#" class="download"> @Session["name"] </a></p>
+
+          <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <span>
+        @if (!string.IsNullOrEmpty(ViewBag.mesg))
+        {
+            <script type="text/javascript">
+                alert("@ViewBag.mesg");
+            </script>
+        }
+    </span>
+   
+  <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      
+    }
+</style>
+    @section scripts{
+
+        <script type="text/javascript">
+            var id = '@Session["userid"]';
+            var parid = '@Session["parid"]';
+            $(document).ready(MainFunction);
+
+            function MainFunction() {
+
+                $('#lnkShowDialog').click(function (event) {
+                    ShowDialog();
+                    //To stop actual/default functionality of the link
+                    event.preventDefault();
+                    return false;
+                });
+
+                $('#lnkClose').click(function (e) {
+                    HideDialog();
+                    e.preventDefault();
+                });
+
+                $('#btn').click(function (e) {
+
+                    var name = $('#txtName').val();
+                    HideDialog();
+                    var data = new FormData();
+                    data.append("name", $("#txtName").val());
+                    data.append("createdby", id);
+                    data.append("parid", '@ViewBag.folderid');
+
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        //url: "/api/Values/PostFormData",
+                        url: "http://localhost:47496/api/Values/savefolder",
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (response) {
+                            window.location = "http://localhost:50362/Home/getcombine";
+                            alert('folder created');
+
+                        }
+                    });
+                    return false;
+                });
+            } //End of MainFunction
+            function ShowDialog() {
+
+                $('#divoverlay').show();
+                $('#modal_dialog').slideDown(500);
+            }
+            function HideDialog() {
+                $('#divoverlay').hide();
+                $('#modal_dialog').slideUp(500);
+            }
+
+            jQuery(document).ready(function () {
+
+
+                $(".delete").click(function (e) {
+                    var id = ($(this).attr('id'));
+                    var result = confirm("Do you want to delete the Role?");
+                    if (result) {
+
+                        window.location.href = "http://localhost:50362/Home/deleteparFolder?folderid=" + id;
+                    }
+
+
+                });
+
+            });
+
+            jQuery(document).ready(function () {
+                 
+                
+                $(".download").click(function (e) {
+                    var id = ($(this).attr('uname'));
+                    var result = confirm("Do you want to download the file?");
+                    if (result) {
+
+                        window.location.href = "http://localhost:47496/api/download/DownloadFile?uniqueName=" + id;
+
+                    }
+                });
+
+                $(".filedelete").click(function (e) {
+                    var id = ($(this).attr('fileName'));
+                    var result = confirm("Do you want to delete the file?");
+                    if (result) {
+
+                        window.location.href = "http://localhost:50362/Home/deletefile?uniqueName=" + id;
+
+                    }
+                });
+
+
+                $(".pdfdownload").click(function (e) {
+                   
+                    var data = new FormData();
+                    data.append("parid", parid);
+
+
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        //url: "/api/Values/PostFormData",
+                        url: "http://localhost:47496/api/pdfdownload/getMetaData",
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (response) {
+                            window.location = "http://localhost:47496/api/pdfdownload/downloadMeta";
+                            alert('pdf downloaded');
+                        }
+ 
+                        });
+                   
+
+                });
+               
+
+
+                $("#btnUpload").click(function (e) {
+                    var userid = '@Session["userid"]';
+                    var parid = '@Session["parid"]';
+                    var data = new FormData();
+                    var files = $("#myfile").get(0).files;
+                    if (files.length > 0) {
+                        data.append("UploadedImage", files[0]);
+                    }    
+
+                    data.append("createdby", userid);
+                    data.append("parid", parid);
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        url: "http://localhost:47496/api/file/UploadFile",
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (response) {
+                            window.location = "http://localhost:50362/Home/getcombine";
+                            alert('file uploaded');
+
+                        }
+                    }
+                    );
+                    return false;
+
+
+                }
+            );
+            });
+
+        </script>
+    }
+
+  <h1></h1>
+<h1></h1>
+  
+
+    <div id="divoverlay" class="overlay">
+    </div>
+    <table>
+    <tr>
+        <th><div>
+       <a href="#" id="lnkShowDialog" style="width:100px;height:100px;color:black ; margin-top:5px">create folder</a>
+      <span id="spText"></span>
+       </div></th>
+        <th><div>
+       <input type="file" id="myfile" />
+       <input type="button" id="btnUpload" value="Upload" style="color:black ; margin-top:5px" /><br />
+       </div></th>
+        <th><input type="button" class="pdfdownload" value="pdfdownload" style="color:black ; margin-top:5px" /><br /></th>
+    </tr>
+</table>
+
+    
+    <div id="modal_dialog" class="web_dialog">
+        <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+            <tr>
+                <td class="dialog_title">
+                    folder
+                </td>
+                <td class="dialog_title align_right">
+                    <a id="lnkClose" href="#">close</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="content">
+                        Name:<input id="txtName" type="text" />
+                        <button id="btn" value="OK"> OK</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- print the code -->
+    <h1></h1>
+   
+
+    <h1></h1>
+    <h1></h1>
+    <div>
+        @foreach (var item in Model.allfolders)
+        {
+            <div class="prodbox">
+                <div style="float:left">
+                    <img src="/UploadedFiles/f_img.png" style="width:100px;height:100px;" />
+                </div>
+                <div style="float:left">
+                    <button id="@item.FolderId" class="delete" value="@item.FolderId">@item.Name</button>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>size</th>
+            <th>FileExt</th>
+            <th>UploadedOn</th>
+            <th>Download</th>
+            <th>Delete</th>
+            <th>Preview</th>
+        </tr>
+
+        @foreach (var item in Model.allfiles)
+        {
+            <tr>
+                <!-- <th><img src="api/FilesData/getThumbnail?uniqueName=" + @item.FileUniqueName style="width:60;height:60;"></th> -->
+                <th>@item.FileUniqueName</th>
+                <th>@item.Size</th>
+                <th>@item.FileExt</th>
+                <th>@item.UploadedOn</th>
+                <th><a href="#" uname="@item.FileUniqueName" class="download">click me to download!</a></th>
+                <th><a href="#" filename="@item.ID" class="filedelete">click me to delete!</a></th>
+                <th><img src="http://localhost:47496/api/thumbnail/getThumbnail?uniqueName=@item.FileUniqueName" style="width:60px;height:60px;">
+            </tr>
+
+        }
+
+    </table>
+

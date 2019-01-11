@@ -1,0 +1,9 @@
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Release\PMS.BAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Release\PMS.BAL.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Release\PMS.DAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Release\PMS.Entities.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Release\PMS.DAL.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\bin\Release\PMS.Entities.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\obj\Release\PMS.BAL.csprojResolveAssemblyReference.cache
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\obj\Release\PMS.BAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\PMS.BAL\obj\Release\PMS.BAL.pdb

@@ -1,0 +1,12 @@
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\DBPractice.exe.config
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\DBPractice.exe
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\DBPractice.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\PMS.BAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\PMS.Entities.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\PMS.DAL.dll
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\PMS.BAL.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\PMS.Entities.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\bin\Debug\PMS.DAL.pdb
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\obj\Debug\DBPractice.csprojResolveAssemblyReference.cache
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\obj\Debug\DBPractice.exe
+D:\study material\6th semsester\ead\bsef15m007\ead_s18_a7_bsef15m005\DBPractice\DBPractice\obj\Debug\DBPractice.pdb

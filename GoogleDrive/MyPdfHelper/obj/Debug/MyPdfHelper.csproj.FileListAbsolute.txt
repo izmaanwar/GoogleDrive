@@ -1,0 +1,7 @@
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\bin\Debug\MyPdfHelper.dll
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\bin\Debug\MyPdfHelper.pdb
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\bin\Debug\itextsharp.dll
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\bin\Debug\itextsharp.xml
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\obj\Debug\MyPdfHelper.dll
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\obj\Debug\MyPdfHelper.pdb
+C:\Users\aa\Documents\asp projects\Assignment8\MyPdfHelper\obj\Debug\MyPdfHelper.csprojResolveAssemblyReference.cache

@@ -1,0 +1,245 @@
+﻿@model IEnumerable<Assignment8.Models.FolderDTO>
+@{
+        ViewBag.Title = "NormalUser";
+        Layout = "~/Views/Shared/_MyProductLayout.cshtml";
+    }
+      
+
+    @section styles{
+        <link rel="Stylesheet" href="@Href("~/Content/CreateFolder.css")" />
+}
+   
+    <h1></h1>    
+    <p>@Html.ActionLink("Home", "NormalUser", "Home")</p>
+    <h1></h1>
+    <h2>welcom @ViewBag.name</h2>
+                      
+  <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <span>
+        @if (!string.IsNullOrEmpty(ViewBag.mesg))
+        {
+            <script type="text/javascript">
+                alert("@ViewBag.mesg");
+            </script>
+        }
+    </span>
+
+    @section scripts{
+
+           <script type="text/javascript">
+            var id = '@Session["userid"]';
+            $(document).ready(MainFunction);
+
+            function MainFunction() {
+
+               $('#lnkShowDialog').click(function (event) {
+                    ShowDialog();
+                    //To stop actual/default functionality of the link
+                    event.preventDefault();
+                    return false;
+                });
+
+                $('#lnkClose').click(function (e) {
+                    HideDialog();
+                    e.preventDefault();
+                });
+
+                $('#btnOK').click(function (e) {
+
+                    var name = $('#txtName').val();
+                    HideDialog();
+                    var data = new FormData();
+                    data.append("name", $("#txtName").val());
+                    data.append("createdby", id);
+                    data.append("parid",0);
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        //url: "/api/Values/PostFormData",
+                        url: "http://localhost:47496/api/Values/savefolder",
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (response) {
+                            window.location = "http://localhost:50362/Home/NormalUser";
+                            alert('folder created');
+                            
+                        }
+                    });
+                    return false;
+                });
+            } //End of MainFunction
+            function ShowDialog() {
+
+                $('#divoverlay').show();
+                $('#modal_dialog').slideDown(500);
+            }
+            function HideDialog() {
+                $('#divoverlay').hide();
+                $('#modal_dialog').slideUp(500);
+            }
+
+            jQuery(document).ready(function () {
+                 
+                $("button").click(function (e) {
+                    var id = ($(this).attr('id'));
+                    var result = confirm("Do you want to delete the Role?");
+                    if (result) {
+                           
+                          // window.location.href = "http://localhost:50362/Home/deleteFolder?folderid=" + id;
+                           var data = new FormData();
+                           data.append("folderid", id);
+                           var ajaxRequest = $.ajax({
+                               type: "POST",
+                               //url: "/api/Values/PostFormData",
+                               url: "http://localhost:50362/Home/deleteFolder",
+                               contentType: false,
+                               processData: false,
+                               data: data,
+                               success: function (response) {
+                                   alert("folder is deleted");
+                                   location.reload();
+                               }
+                           });
+                           return false;
+                    }
+                    else 
+                    {
+                        window.location.href = "http://localhost:50362/Home/file?folderid=" + id;
+                    }
+
+                
+                 
+                });
+
+                $(".pdfdownload").click(function (e) {
+
+                    var data = new FormData();
+                    
+
+
+                    var ajaxRequest = $.ajax({
+                        type: "POST",
+                        //url: "/api/Values/PostFormData",
+                        url: "http://localhost:47496/api/pdf/saveMetaData",
+                        contentType: false,
+                        processData: false,
+                       
+                        success: function (response) {
+                            window.location = "http://localhost:47496/api/pdf/downloadpdf";
+                            alert('pdf downloaded');
+                        }
+
+                    });
+
+
+                });
+
+
+
+
+               /* var timer = 0;
+                var delay = 200;
+                var prevent = false;
+
+                $("button")
+                  .on("click", function () {
+                      timer = setTimeout(function () {
+                          if (!prevent) {
+                              /* var folderid = $(this).attr('id');
+                              var id = $(this).attr("data-value")
+                             
+                              var result = confirm("Do you want to delete the Role?");
+                              if (result) {
+                                  $('.delete').click(function (e) {
+                                      alert($(this).attr('id'));
+                                  });
+                               window.location.href = "http://localhost:50362/Home/deleteFolder?folderid=" + id;
+                                 }
+                             }
+                          prevent = false;
+                      }, delay);
+                  })
+                  .on("dblclick", function () {
+                      clearTimeout(timer);
+                      prevent = true;
+                      var folderid = $(this).attr('id');
+                     // var id = $(this).attr("data-id")
+                      var result = confirm("double here");
+                      if (result) {
+                          window.location.href = "http://localhost:50362/Home/file?folderid=" + folderid;
+                      }
+                      
+                  });*/
+            });
+           
+              </script>
+    }
+    
+                     <div id="divoverlay" class="overlay">
+                          </div>
+                         
+                      <table>
+                          <tr>
+                              <th>
+                                  <div>
+                                    <a href="#" id="lnkShowDialog" style="width:100px;height:100px;color:black ; margin-top:5px">create folder</a>
+                                     <span id="spText"></span>
+                                  </div>
+                              </th>
+                             
+                              <th><input type="button" class="pdfdownload" value="pdfdownload" style="color:black ; margin-top:5px" /><br /></th>
+                          </tr>
+                      </table>
+
+
+
+                          <div id="modal_dialog" class="web_dialog">
+                              <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+                                  <tr>
+                                      <td class="dialog_title">
+                                          folder
+                                      </td>
+                                      <td class="dialog_title align_right">
+                                          <a id="lnkClose" href="#">close</a>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="2">
+                                          <div class="content">
+                          Name:<input id="txtName" type="text" />
+                          <button id="btnOK" value="OK">OK</button>
+                      </div>
+                  </td>
+              </tr>
+          </table>
+      </div>
+
+    <!-- print the code -->
+      <h1></h1>
+      
+       
+        <div>
+           @foreach (var item in Model)
+        {
+           <div class="prodbox">
+                <div style="float:left">
+                  <img src="/UploadedFiles/f_img.png" style="width:100px;height:100px;" />
+                 </div>
+                     <div style="float:left">
+                       <button  id="@item.FolderId" class="delete" value="@item.FolderId">@item.Name</button>
+                        
+
+                         <!-- <input class="delete" type="button" value="item.Name">--> 
+                        <!-- <a  class="delete" dat="item.FolderId"> item.Name</a> --> 
+                         <!--  <a ondblclick="location.href='your_link'">Double click on me</a>   
+                         <a onclick="return false" ondblclick="location=this.href" href="http://www.google.com">Google</a>   "location.href = 'http://localhost:50362/Home/filepage?folderid = + @item.FolderId '" -->  
+                     </div>
+             </div>
+       }
+        </div>
+        
+
+
+
+
+
